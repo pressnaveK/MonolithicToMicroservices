@@ -1,0 +1,19 @@
+CREATE TABLE question (
+    id SERIAL PRIMARY KEY,
+    category VARCHAR(50) CHECK (category IN ('Python', 'Java')),
+    difficulties VARCHAR(50) CHECK (difficulties IN ('Easy', 'Moderate', 'Difficult')),
+    question_title TEXT NOT NULL,
+    option1 TEXT NOT NULL,
+    option2 TEXT NOT NULL,
+    option3 TEXT NOT NULL,
+    correct_answer VARCHAR(50) CHECK (correct_answer IN (option1, option2, option3))
+);
+
+
+
+INSERT INTO question (category, difficulties, question_title, option1, option2, option3, correct_answer) VALUES
+('Python', 'Easy', 'What is the output of print(2 ** 3)?', '8', '6', '9', '8'),
+('Python', 'Moderate', 'Which of the following is a mutable data type in Python?', 'tuple', 'list', 'string', 'list'),
+('Java', 'Difficult', 'Which of the following is used to handle exceptions in Java?', 'try', 'catch', 'finally', 'try'),
+('Java', 'Easy', 'What is the default value of a boolean variable in Java?', 'true', 'false', 'null', 'false'),
+('Python', 'Difficult', 'What is the output of [1, 2] + [3, 4]?', '[1, 2, 3, 4]', '[1, 2] + [3, 4]', 'Error', '[1, 2, 3, 4]');
